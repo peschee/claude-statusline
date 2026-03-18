@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -eu
 
 REPO="peschee/claude-statusline"
 CLAUDE_DIR="${HOME}/.claude"
@@ -20,7 +20,7 @@ if ! command -v jq >/dev/null 2>&1; then
 fi
 
 # --- Determine version ---
-if [ -n "$1" ]; then
+if [ -n "${1:-}" ]; then
     VERSION="$1"
 else
     VERSION=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" | jq -r '.tag_name')

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -Eeuo pipefail
 # Claude Code status line script
 # Layout:
 #   Line 1: [model] project:branch +adds/-dels
