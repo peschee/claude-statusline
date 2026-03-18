@@ -45,8 +45,8 @@ if [ -n "$branch" ]; then
     fi
 
     if [ -n "$diff_stat" ]; then
-        adds=$(echo "$diff_stat" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+')
-        dels=$(echo "$diff_stat" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+')
+        adds=$(echo "$diff_stat" | grep -oE '[0-9]+ insertion' | grep -oE '[0-9]+' || true)
+        dels=$(echo "$diff_stat" | grep -oE '[0-9]+ deletion' | grep -oE '[0-9]+' || true)
         [ -z "$adds" ] && adds=0
         [ -z "$dels" ] && dels=0
         line1="${line1} ${WHITE}|${RESET} ${GREEN}+${adds}${RESET}/${RED}-${dels}${RESET}"
