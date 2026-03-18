@@ -10,6 +10,8 @@ Displays model, git branch, diff stats, last commit, context usage, session dura
 [████████░░░░░░░░░░░░░░] 36% | 363k / 1.0M | 1h23m | $4.50
 ```
 
+See the [official status line documentation](https://docs.anthropic.com/en/docs/claude-code/statusline) for details on the feature and available data fields.
+
 ## Requirements
 
 - [jq](https://jqlang.github.io/jq/) (`brew install jq` on macOS, `sudo apt-get install jq` on Ubuntu)
