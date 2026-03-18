@@ -11,7 +11,6 @@ input=$(cat)
 cwd=$(echo "$input" | jq -r '.workspace.current_dir // empty')
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
-remaining_pct=$(echo "$input" | jq -r '.context_window.remaining_percentage // empty')
 ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
 input_tokens=$(echo "$input" | jq -r '
   (.context_window.used_percentage // 0) as $pct |
@@ -73,7 +72,6 @@ if [ -n "$used_pct" ]; then
     # Build 22-char progress bar
     bar_width=22
     filled=$(echo "$used_pct $bar_width" | awk '{printf "%d", ($1/100)*$2}')
-    empty=$((bar_width - filled))
     bar=""
     i=0
     while [ $i -lt "$filled" ]; do bar="${bar}█"; i=$((i+1)); done
