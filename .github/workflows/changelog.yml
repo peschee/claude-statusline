@@ -3,13 +3,20 @@ name: Update Changelog
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag (e.g. v1.3.2)
+        required: true
 
 permissions:
   contents: write
 
 jobs:
   update-changelog:
-    if: ${{ !github.event.release.prerelease }}
+    if: >-
+      github.repository == 'peschee/claude-statusline'
+      && (github.event_name == 'workflow_dispatch' || !github.event.release.prerelease)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -27,14 +34,16 @@ jobs:
       - name: Generate changelog entry
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
         run: node scripts/update-changelog.js "$RELEASE_TAG"
 
       - name: Commit and push
+        env:
+          RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add CHANGELOG.md
           git diff --cached --quiet && echo "No changes" && exit 0
-          git commit -m "Update CHANGELOG.md for ${{ github.event.release.tag_name }}"
+          git commit -m "Update CHANGELOG.md for $RELEASE_TAG"
           git push
