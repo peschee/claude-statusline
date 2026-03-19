@@ -26,13 +26,20 @@ GREEN=$(printf '\033[32m')
 RED=$(printf '\033[31m')
 YELLOW=$(printf '\033[33m')
 WHITE=$(printf '\033[97m')
+CYAN=$(printf '\033[36m')
 RESET=$(printf '\033[0m')
+
+# --- Asylum environment indicator ---
+asylum_indicator=""
+if [ "${ASYLUM_DOCKER:-}" = "1" ]; then
+    asylum_indicator="${CYAN} ${RESET} "
+fi
 
 # --- Line 1: model, project:branch, git diff stats ---
 project=$(basename "$cwd")
 branch=$(git -C "$cwd" --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null)
 
-line1="${GREEN}[${model}]${RESET}"
+line1="${asylum_indicator}${GREEN}[${model}]${RESET}"
 
 if [ -n "$branch" ]; then
     line1="${line1} ${YELLOW}${project}:${branch}${RESET}"
