@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Replace Nerd Font icon with Unicode shield emoji (`🛡`) for asylum indicator for broader font compatibility
+
 ## [1.3.0] - 2026-03-19
 
 ### Added

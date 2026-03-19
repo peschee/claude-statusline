@@ -32,7 +32,7 @@ RESET=$(printf '\033[0m')
 # --- Asylum environment indicator ---
 asylum_indicator=""
 if [ "${ASYLUM_DOCKER:-}" = "1" ]; then
-    asylum_indicator="${CYAN} ${RESET} "
+    asylum_indicator="${CYAN}🛡${RESET} "
 fi
 
 # --- Line 1: model, project:branch, git diff stats ---
