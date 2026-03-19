@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Install script referencing wrong path for statusline config
+
 ## [1.3.1] - 2026-03-19
 
 ### Fixed
