@@ -40,7 +40,7 @@ curl -fsSL -o "$SCRIPT_PATH" "$URL"
 chmod +x "$SCRIPT_PATH"
 
 # --- Patch settings.json ---
-STATUSLINE_CONFIG="{\"type\":\"command\",\"command\":\"bash ${CLAUDE_DIR}/${SCRIPT_NAME}\"}"
+STATUSLINE_CONFIG="{\"type\":\"command\",\"command\":\"bash ~/.claude/${SCRIPT_NAME}\"}"
 
 if [ -f "$SETTINGS_FILE" ]; then
     # Update existing settings
