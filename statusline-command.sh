@@ -37,7 +37,7 @@ fi
 
 # --- Line 1: model, project:branch, git diff stats ---
 project=$(basename "$cwd")
-branch=$(git -C "$cwd" --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null)
+branch=$(git -C "$cwd" --no-optional-locks rev-parse --abbrev-ref HEAD 2>/dev/null || true)
 
 line1="${asylum_indicator}${GREEN}[${model}]${RESET}"
 
@@ -45,10 +45,10 @@ if [ -n "$branch" ]; then
     line1="${line1} ${YELLOW}${project}:${branch}${RESET}"
 
     # Git diff stats: total added/removed lines vs upstream or HEAD~1
-    diff_stat=$(git -C "$cwd" --no-optional-locks diff --shortstat HEAD 2>/dev/null)
+    diff_stat=$(git -C "$cwd" --no-optional-locks diff --shortstat HEAD 2>/dev/null || true)
     if [ -z "$diff_stat" ]; then
         # Nothing in working tree — compare last commit vs its parent
-        diff_stat=$(git -C "$cwd" --no-optional-locks diff --shortstat HEAD~1 HEAD 2>/dev/null)
+        diff_stat=$(git -C "$cwd" --no-optional-locks diff --shortstat HEAD~1 HEAD 2>/dev/null || true)
     fi
 
     if [ -n "$diff_stat" ]; then
@@ -61,8 +61,8 @@ if [ -n "$branch" ]; then
 fi
 
 # --- Line 2: last commit hash + message ---
-commit_hash=$(git -C "$cwd" --no-optional-locks log -1 --format='%h' 2>/dev/null)
-commit_msg=$(git -C "$cwd" --no-optional-locks log -1 --format='%s' 2>/dev/null)
+commit_hash=$(git -C "$cwd" --no-optional-locks log -1 --format='%h' 2>/dev/null || true)
+commit_msg=$(git -C "$cwd" --no-optional-locks log -1 --format='%s' 2>/dev/null || true)
 
 line2=""
 if [ -n "$commit_hash" ]; then

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Replace Nerd Font icon with Unicode shield emoji (`🛡`) for asylum indicator for broader font compatibility
+- Git commands in statusline script failing CI due to `set -e` and non-zero exit codes in shallow clones
 
 ## [1.3.0] - 2026-03-19
 
