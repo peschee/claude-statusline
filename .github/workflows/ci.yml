@@ -17,3 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: make test
+      - run: ASYLUM_DOCKER=1 make test
