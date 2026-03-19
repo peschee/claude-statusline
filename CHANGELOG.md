@@ -7,9 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-03-19
+
 ### Added
 
 - Make `CLAUDE_DIR` configurable via environment variable in install script
+- `CHANGELOG.md` following Keep a Changelog format
 
 ## [1.2.0] - 2026-03-19
 
@@ -53,7 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Custom Claude Code statusline displaying model, git branch, diff stats, last commit, context usage, session duration, and cost
 - Install script with automatic `settings.json` patching
 
-[Unreleased]: https://github.com/peschee/claude-statusline/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/peschee/claude-statusline/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/peschee/claude-statusline/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/peschee/claude-statusline/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/peschee/claude-statusline/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/peschee/claude-statusline/compare/v1.1.0...v1.1.1
