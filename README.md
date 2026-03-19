@@ -28,6 +28,12 @@ Or install a specific version:
 curl -fsSL https://raw.githubusercontent.com/peschee/claude-statusline/main/install.sh | sh -s v1.0.0
 ```
 
+To install into a custom Claude config directory (e.g. a global agent config):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/peschee/claude-statusline/main/install.sh | CLAUDE_DIR=~/.asylum/agents/claude sh
+```
+
 ## What it does
 
 1. Downloads `statusline-command.sh` to `~/.claude/`

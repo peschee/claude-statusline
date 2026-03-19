@@ -2,7 +2,7 @@
 set -eu
 
 REPO="peschee/claude-statusline"
-CLAUDE_DIR="${HOME}/.claude"
+CLAUDE_DIR="${CLAUDE_DIR:-${HOME}/.claude}"
 SETTINGS_FILE="${CLAUDE_DIR}/settings.json"
 SCRIPT_NAME="statusline-command.sh"
 SCRIPT_PATH="${CLAUDE_DIR}/${SCRIPT_NAME}"
