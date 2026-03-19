@@ -1,0 +1,13 @@
+{
+  "name": "claude-statusline",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "changelog": "node scripts/update-changelog.js"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.58",
+    "@dotenvx/dotenvx": "^1.55.1",
+    "ai": "^6.0.116"
+  }
+}

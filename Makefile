@@ -10,3 +10,7 @@ lint:
 .PHONY: test
 test:
 	@echo '$(MOCK_JSON)' | bash $(STATUSLINE_SCRIPT)
+
+.PHONY: changelog
+changelog:
+	node scripts/update-changelog.js $(TAG)
