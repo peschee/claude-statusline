@@ -4,7 +4,7 @@ set -Eeuo pipefail
 # Layout:
 #   Line 1: [model] project:branch +adds/-dels
 #   Line 2: [hash] commit message
-#   Line 3: [context bar] pct% | free | duration | cost
+#   Line 3: [context bar] pct% | free | duration | cost | account
 
 input=$(cat)
 
@@ -27,6 +27,7 @@ RED=$(printf '\033[31m')
 YELLOW=$(printf '\033[33m')
 WHITE=$(printf '\033[97m')
 CYAN=$(printf '\033[36m')
+GRAY=$(printf '\033[90m')
 RESET=$(printf '\033[0m')
 
 # --- Asylum environment indicator ---
@@ -118,6 +119,16 @@ total_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
 if [ -n "$total_cost" ] && [ "$total_cost" != "0" ]; then
     formatted_cost=$(printf '%.2f' "$total_cost")
     line3="${line3} ${WHITE}|${RESET} ${GREEN}\$${formatted_cost}${RESET}"
+fi
+
+# --- Logged-in account from ~/.claude.json ---
+account=$(jq -r '.oauthAccount.emailAddress // empty' "$HOME/.claude.json" 2>/dev/null || true)
+if [ -n "$account" ]; then
+    if [ -n "$line3" ]; then
+        line3="${line3} ${WHITE}|${RESET} ${GRAY}${account}${RESET}"
+    else
+        line3="${GRAY}${account}${RESET}"
+    fi
 fi
 
 # --- Output (blank lines between content lines for spacing) ---
